@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+       <div class="addemployeeTitleContainer">
+           <div class="addEmployeesTitleContainer">
+               <div>Add Employee Details</div>
+           </div>
+           <div class="addEmployeeBtnContainer">
+               <div class="addNewEmployeeBtn" (click)="addNewEmployeeBtn()">Add +</div>
+           </div>
+           <div *ngIf="newEmplyeeClicked">
+               <div class="tableWrapper">
+                   <form>
+                       <div class="form-group name">
+                           <input type='text' class='form-control input' placeholder='Enter your name' id="name" name="name"  [(ngModel)]="model.name"> 
+                       </div>
+                       <div class="form-group position">
+                            <input type = 'text' class='form-control input' placeholder='Enter your position' name="position" id="position" [(ngModel)]="model.position">
+                    </div>
+                    <div class="submitBtnContainer">
+                        <button class="saveBtn" type='submit' (click)='addEmployee()'>Save</button>
+                    </div>
+                   </form>
+               </div>
+           </div>
+           <div class="tableWrapper">
+               <div class="containerTitle">
+                   <div class="oneTitle">Name</div>
+                   <div class="two-title">Position</div>
+                   <div class="three-title">Action</div>
+               </div>
+               <div class="containerListItem" *ngFor="let employee of employess; let i= index" >
+                   <div class="one">{{employee.name}}</div>
+                   <div class="two">{{employee.position}}</div>
+                   <div class="three">
+                <button class="btn btn-primary" (click)="editEmployee(i)">Edit</button>&nbsp; &nbsp;
+                   <button class="btn btn-secondary" (click)="deleteEmployee(i)">Delete X</button>
+                </div>
+               </div>
+           </div>
+           <div class="editEmployeeTitleContainer">
+               <div class="editEmployee">Edit Employee</div>
+           </div>
+           <form>
+            <div class="form-group name">
+                <input type='text' class='form-control input' placeholder='Edit your name' id="name" name="name"  [(ngModel)]="model2.name"> 
+            </div>
+            <div class="form-group position">
+                 <input type = 'text' class='form-control input' placeholder='Edit your position' name="position" id="position" [(ngModel)]="model2.position">
+         </div>
+         <div class="btn btn-dark">
+             <button class="saveBtn" type='submit' (click)='updateEmployee()'>Update</button>
+         </div>
+        </form>
+       </div> 
+    </div>
+</div>
